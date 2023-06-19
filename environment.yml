@@ -1,0 +1,31 @@
+name: popup
+channels:
+  - defaults
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+- python=3.10
+- pip
+- numpy=1.24.3
+- scipy=1.10.1
+- scikit-learn
+- rtree
+- mkl=2021
+- pytorch::pytorch=2.0.1
+- pytorch::torchvision=0.15
+- pytorch::pytorch-cuda=11.8
+- pytorch::faiss-gpu=1.7.4
+- conda-forge::trimesh=3.22.0
+- conda-forge::shapely=2.0.1
+- conda-forge::tqdm
+- pip:
+  - smplx
+  - tomlkit
+  - libigl
+  - wandb
+  - pyrender
+  - open3d
+  - omegaconf
+  - loguru
+  - git+https://github.com/vchoutas/torch-trust-ncg.git

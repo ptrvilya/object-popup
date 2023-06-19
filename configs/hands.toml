@@ -1,0 +1,41 @@
+# DIRECTORIES WITH DATA AND EXPERIMENTS
+# Directory with experiments
+EXP_ROOT = "./experiments"
+# Directory with SMPL, SMPL-h, nad MANO models
+SMPLX_PATH = "./data/body_models/smplx/models"
+# Directory with preprocessed GRAB data
+GRAB_PATH = "./data/preprocessed/grab_hands/"
+
+
+# GENERAL PREPROCESS CONFIG
+# Type of data to process
+input_type = "hands"  # smplh, hands, smpl
+# Number of points to sample from human mesh
+num_points_pc_subject = 9000
+# Number of points to sample from object mesh
+obj_keypoints_npoints = 1500
+
+
+# GRAB SPECIFIC PREPROCESSING PARAMS
+[preprocess_grab]
+# Preprocess only frames with human-object contacts
+only_contact_frames = true
+# Downsample from 120fps to 30fps or 10fps
+downsample = "10fps" # "None", "30fps", "10fps"
+# Use modified meshes with fewer vertices
+use_decimated_obj_meshes = false
+# Preprocess only selected subjects
+subjects = ["*"]
+# Preprocess only selected objects
+objects = [
+    "banana", "binoculars", "camera", "coffeemug",
+    "cup", "doorknob", "eyeglasses", "flute",
+    "flashlight", "fryingpan", "gamecontroller", "hammer",
+    "headphones", "knife", "lightbulb", "mouse",
+    "mug", "phone", 'teapot', "toothbrush", "wineglass"
+]
+# Load generated SMPL-h meshes (works only with SMPL-h)
+load_existing_sbj_meshes = false
+# Align SMPL using skeleton information
+align_with_joints = false
+

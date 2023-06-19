@@ -1,0 +1,83 @@
+datasets = ["grab", "behave"]
+
+# DATA SPLIT
+# mapping of object class name to id
+[objname2classid]
+backpack=39
+basketball=38
+boxlarge=37
+boxlong=36
+boxmedium=35
+boxsmall=34
+boxtiny=33
+chairblack=32
+chairwood=31
+keyboard=30
+monitor=29
+plasticcontainer=28
+stool=27
+suitcase=26
+tablesmall=25
+tablesquare=24
+toolbox=23
+trashbin=22
+yogaball=21
+yogamat=20
+wineglass=19
+toothbrush=18
+teapot=17
+phone=16
+mug=3
+mouse=15
+lightbulb=14
+knife=13
+headphones=12
+hammer=11
+gamecontroller=10
+fryingpan=9
+flute=8
+flashlight=7
+eyeglasses=6
+doorknob=5
+cup=4
+coffeemug=3
+camera=2
+binoculars=1
+banana=0
+
+# train and evaluation splits
+[grab]
+train_subjects = "train"
+train_objects = [
+    "banana", "binoculars", "camera", "coffeemug",
+    "cup", "doorknob", "eyeglasses", "flute",
+    "flashlight", "fryingpan", "gamecontroller", "hammer",
+    "headphones", "knife", "lightbulb", "mouse",
+    "mug", "phone", 'teapot', "toothbrush", "wineglass"
+]
+
+val_subjects = [9, 10]
+val_objects = [
+    "banana", "binoculars", "camera", "coffeemug",
+    "cup", "doorknob", "eyeglasses", "flute",
+    "flashlight", "fryingpan", "gamecontroller", "hammer",
+    "headphones", "knife", "lightbulb", "mouse",
+    "mug", "phone", 'teapot', "toothbrush", "wineglass"
+]
+
+# train and evaluation splits
+[behave]
+train_split_file = "./assets/behave_train.json"
+train_objects = [
+    "backpack", "boxlong", "boxtiny", "keyboard", "stool", "tablesquare", "yogaball",
+    "basketball", "boxmedium", "chairblack", "monitor", "suitcase", "toolbox", "yogamat",
+    "boxlarge", "boxsmall", "chairwood", "plasticcontainer", "tablesmall", "trashbin"
+
+]
+
+val_split_file = "./assets/behave_test.json"
+val_objects = [
+    "backpack", "boxlong", "boxtiny", "keyboard", "stool", "tablesquare", "yogaball",
+    "basketball", "boxmedium", "chairblack", "monitor", "suitcase", "toolbox", "yogamat",
+    "boxlarge", "boxsmall", "chairwood", "plasticcontainer", "tablesmall", "trashbin"
+]

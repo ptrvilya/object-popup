@@ -1,0 +1,158 @@
+datasets = ["grab", "behave"]
+
+# DATA SAMPLING
+# type of object keypoints distortion method
+obj_keypoints_init = "local_jitter"
+# number of object keypoints
+obj_keypoints_npoints = 1500
+# type of dataset mixture sampler
+sampler="weighted"
+
+# TRAINING
+# number of training epochs
+epochs = 60
+# learning rate
+lr = 1e-4
+# type of learning rate scheduler
+lr_scheduler = "multistep"
+# learning rate schedule for the scheduler above
+lr_scheduler_params = { gamma=0.1, milestones=[30, 40, 50] }
+# schedule of loss function usage
+training_schedule = { start_pred_center=20, start_pred_class=30 }
+
+# MODEL
+model_name = "object_popup"
+
+[model_params]
+# number of local neighborhood points
+sbj_local_n_points = 3000
+# parameters of the object encoder
+encoder_object_params = { n_onehot_classes=40, classifier_hidden_layer=256 }
+# parameters of the offsets decoder
+decoder_params = { hidden_dim=512 }
+# type of the decoder (offset, Rt)
+decoder_type = "offsets"
+# additionaly predict object class
+with_classifier = true
+# parameters of the PointNet v2 encoders
+    [model_params.encoder_subject_params]
+        [model_params.encoder_subject_params.sa1_params]
+            npoint = 512
+            radius_list = [0.05, 0.1, 0.2]
+            nsample_list = [16, 32, 128]
+            mlp_list = [[32, 32, 64], [64, 64, 128], [64, 64, 128]]
+        [model_params.encoder_subject_params.sa2_params]
+            npoint = 128
+            radius_list = [0.1, 0.2, 0.4]
+            nsample_list = [32, 64, 128]
+            mlp_list = [[64, 64, 128], [128, 128, 256], [128, 128, 256]]
+        [model_params.encoder_subject_params.sa3_params]
+            mlp_list = [256, 256, 512]
+    [model_params.encoder_subjectobject_params]
+        in_channel = 4
+        out_dim = 128
+
+# LOSS WEIGHTS
+# dictionary with all used losses
+[loss_weights]
+"obj_keypoints_offsets" = 1000.0
+"obj_class" = 10.0
+"obj_center" = 10.0
+
+# DATA SPLIT
+# mapping of object class name to id
+[objname2classid]
+backpack=39
+basketball=38
+boxlarge=37
+boxlong=36
+boxmedium=35
+boxsmall=34
+boxtiny=33
+chairblack=32
+chairwood=31
+keyboard=30
+monitor=29
+plasticcontainer=28
+stool=27
+suitcase=26
+tablesmall=25
+tablesquare=24
+toolbox=23
+trashbin=22
+yogaball=21
+yogamat=20
+wineglass=19
+toothbrush=18
+teapot=17
+phone=16
+mug=3
+mouse=15
+lightbulb=14
+knife=13
+headphones=12
+hammer=11
+gamecontroller=10
+fryingpan=9
+flute=8
+flashlight=7
+eyeglasses=6
+doorknob=5
+cup=4
+coffeemug=3
+camera=2
+binoculars=1
+banana=0
+
+# train, validation and evaluation splits
+[grab]
+train_subjects = "train"
+train_objects = [
+    "banana", "binoculars", "camera", "coffeemug",
+    "cup", "doorknob", "eyeglasses", "flute",
+    "flashlight", "fryingpan", "gamecontroller", "hammer",
+    "headphones", "knife", "lightbulb", "mouse",
+    "mug", "phone", 'teapot', "toothbrush", "wineglass"
+]
+
+val_subjects = "val"
+val_objects = [
+    "banana", "binoculars", "camera", "coffeemug",
+    "cup", "doorknob", "eyeglasses", "flute",
+    "flashlight", "fryingpan", "gamecontroller", "hammer",
+    "headphones", "knife", "lightbulb", "mouse",
+    "mug", "phone", 'teapot', "toothbrush", "wineglass"
+]
+
+gen_subjects = [9, 10]
+gen_objects = [
+    "banana", "binoculars", "camera", "coffeemug",
+    "cup", "doorknob", "eyeglasses", "flute",
+    "flashlight", "fryingpan", "gamecontroller", "hammer",
+    "headphones", "knife", "lightbulb", "mouse",
+    "mug", "phone", 'teapot', "toothbrush", "wineglass"
+]
+
+# train, validation and evaluation splits
+[behave]
+train_split_file = "./assets/behave_train.json"
+train_objects = [
+    "backpack", "boxlong", "boxtiny", "keyboard", "stool", "tablesquare", "yogaball",
+    "basketball", "boxmedium", "chairblack", "monitor", "suitcase", "toolbox", "yogamat",
+    "boxlarge", "boxsmall", "chairwood", "plasticcontainer", "tablesmall", "trashbin"
+
+]
+
+val_split_file = "./assets/behave_test.json"
+val_objects = [
+    "backpack", "boxlong", "boxtiny", "keyboard", "stool", "tablesquare", "yogaball",
+    "basketball", "boxmedium", "chairblack", "monitor", "suitcase", "toolbox", "yogamat",
+    "boxlarge", "boxsmall", "chairwood", "plasticcontainer", "tablesmall", "trashbin"
+]
+
+gen_split_file = "./assets/behave_test.json"
+gen_objects = [
+    "backpack", "boxlong", "boxtiny", "keyboard", "stool", "tablesquare", "yogaball",
+    "basketball", "boxmedium", "chairblack", "monitor", "suitcase", "toolbox", "yogamat",
+    "boxlarge", "boxsmall", "chairwood", "plasticcontainer", "tablesmall", "trashbin"
+]

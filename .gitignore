@@ -1,0 +1,7 @@
+.idea/
+.DS_store
+*.pyc
+*.tar
+experiments/
+visualization/
+.ipynb_checkpoints

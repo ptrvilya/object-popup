@@ -1,0 +1,30 @@
+# DIRECTORIES WITH DATA AND EXPERIMENTS
+# Directory with experiments
+EXP_ROOT = "./experiments"
+# Directory with SMPL, SMPL-h, nad MANO models
+SMPLX_PATH = "./data/body_models/smplx/models"
+# Directory with preprocessed GRAB data
+GRAB_PATH = "./data/preprocessed/grab_smplh/"
+# Directory with preprocessed BEHAVE data
+BEHAVE_PATH = "./data/preprocessed/behave_rawpc/"
+
+
+# GENERAL PREPROCESS CONFIG
+# Type of data to process
+input_type = "smplh"  # smplh, hands, smpl
+# Number of points to sample from human mesh
+num_points_pc_subject = 9000
+# Number of points to sample from object mesh
+obj_keypoints_npoints = 1500
+
+
+# BEAHVE SPECIFIC PREPROCESSING PARAMS
+[preprocess_behave]
+# Preprocess only selected objects
+objects = []
+# Preprocess BEHAVE raw pointclouds instead of sampling points from SMPL mesh
+use_raw_pcs = true
+# Threshold for computing human-object contacts (if no precomputed contacts are provided)
+contact_threshold = 0.020
+# Align SMPL using skeleton information
+align_with_joints = false
