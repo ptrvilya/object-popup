@@ -47,10 +47,10 @@ The steps are described in [docs/data.md](./docs/data.md).
 
 
 ## Pre-trained models and evaluation
-Pre-trained models can be obtained from the [link](). With the commands:
+Pre-trained models can be obtained from the [link](https://nc.mlcloud.uni-tuebingen.de/index.php/s/8H4EHmx9MA8sBEs). With the commands:
 ```bash
-wget -O ./assets/object_pop_up_noclass.pth 
-wget -O ./assets/object_pop_up_class.pth
+wget https://nc.mlcloud.uni-tuebingen.de/index.php/s/PG8wZ5HRKytEY8S/download/object_pop_up_noclass.tar -P ./assets 
+wget https://nc.mlcloud.uni-tuebingen.de/index.php/s/Dfx9rfQ2tW4ZsEY/download/object_pop_up_class.tar -P ./assets
 ```
 
 Use the following commands to run evaluation:
