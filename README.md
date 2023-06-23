@@ -27,7 +27,7 @@
             <img src="https://img.shields.io/badge/Project-Page-blue?style=for-the-badge&logo=Google%20chrome&logoColor=white" alt="Project Page">
         </a>
         &emsp;
-        <a href="https://youtu.be/qMDcSIXQgR0">
+        <a href="https://youtu.be/buEz9ES-R_o">
             <img src="https://img.shields.io/badge/YouTube-video-black?style=for-the-badge&logo=youtube&logoColor=white&labelColor=FF0000&color=black" alt="YouTube video">
         </a>
     </p>
