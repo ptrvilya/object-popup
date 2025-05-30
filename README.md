@@ -56,9 +56,9 @@ wget https://nc.mlcloud.uni-tuebingen.de/index.php/s/Dfx9rfQ2tW4ZsEY/download/ob
 Use the following commands to run evaluation:
 ```bash
 # model without class prediction (assumes 24GB GPU memory)
-python evaluate.py scenarios/gb_PNv2_noclass.toml -b 64 -w 20 -d grab behave -g -rc ./assets/object_pop_up_noclass.pth -c configs/smplh.toml
+python evaluate.py scenarios/gb_PNv2_noclass.toml -b 64 -w 20 -d grab behave -g -rc ./assets/object_pop_up_noclass.tar -c configs/smplh.toml
 # model with class prediction (assumes 24GB GPU memory)
-python evaluate.py scenarios/gb_PNv2_class.toml -b 64 -w 20 -d grab behave -g -rc ./assets/object_pop_up_class.pth -c configs/smplh.toml
+python evaluate.py scenarios/gb_PNv2_class.toml -b 64 -w 20 -d grab behave -g -rc ./assets/object_pop_up_class.tar -c configs/smplh.toml
 ```
 
 
